@@ -97,15 +97,15 @@ TEST_CASE("multipule operators 2")
 TEST_CASE("multipule operators 3")
 {
     Fraction a(5,3), b(14,21) ,c(5,2) ,d(10,3);
-    CHECK(a+b*c==d);
+    CHECK(a+(b*c)==d);
 }
 TEST_CASE("multipule operators 4")
 {
     Fraction a(5,3), b(14,21) ,c(5,2) ,d(29,15);
-    CHECK(a+b/c==d);
+    CHECK(a+(b/c)==d);
 }
 TEST_CASE("multipule operators 5")
 {
     Fraction a(5,3), b(14,21) ,c(5,2) ,d(7,5);
-    CHECK(a-b/c==d);
+    CHECK(a-(b/c)==d);
 }
