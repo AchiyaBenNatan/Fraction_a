@@ -37,12 +37,13 @@ TEST_CASE("/ test")
 TEST_CASE("++ test")
 {
     Fraction a(1,3), b(4,3);
+    CHECK_FALSE(a++ == b);
     CHECK(a++ == b);
 }
 TEST_CASE("-- test")
 {
     Fraction a(1,3), b(2,-3);
-    CHECK(a-- == b);
+    CHECK(--a == b);
 }
 TEST_CASE("> test")
 {
@@ -56,8 +57,9 @@ TEST_CASE("< test")
 }
 TEST_CASE("== test false")
 {
-    Fraction a(1,3), b(1,2);
-    CHECK(a!=b);
+    Fraction a(1,3), b(1,2) ,c(1,6);
+    CHECK_FALSE(a==b);
+    CHECK((b-c)==a);
 }
 TEST_CASE("== test true")
 {
@@ -84,28 +86,16 @@ TEST_CASE("reduced fraction / check")
     Fraction a(5,3), b(14,21) ,c(5,2);
     CHECK(a/b==c);
 }
-TEST_CASE("multipule operators 1")
+TEST_CASE("multipule operators")
 {
     Fraction a(5,3), b(14,21) ,c(5,2) ,d(25,4);
     CHECK(a/b*c==d);
-}
-TEST_CASE("multipule operators 2")
-{
-    Fraction a(5,3), b(14,21) ,c(5,2) ,d(1,-6);
-    CHECK(a+b-c==d);
-}
-TEST_CASE("multipule operators 3")
-{
-    Fraction a(5,3), b(14,21) ,c(5,2) ,d(10,3);
-    CHECK(a+(b*c)==d);
-}
-TEST_CASE("multipule operators 4")
-{
-    Fraction a(5,3), b(14,21) ,c(5,2) ,d(29,15);
-    CHECK(a+(b/c)==d);
-}
-TEST_CASE("multipule operators 5")
-{
-    Fraction a(5,3), b(14,21) ,c(5,2) ,d(7,5);
-    CHECK(a-(b/c)==d);
+    Fraction e(1,-6);
+    CHECK(a+b-c==e);
+    Fraction f(10,3);
+    CHECK(a+(b*c)==f);
+    Fraction g(29,15);
+    CHECK(a+(b/c)==g);
+    Fraction h(7,5);
+    CHECK(a-(b/c)==h);
 }
